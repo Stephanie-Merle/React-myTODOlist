@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import trash from "./assets/trash.svg";
+import "./reset.css";
 import "./App.css";
 
 const App = () => {
@@ -23,22 +25,29 @@ const App = () => {
     console.log(state);
   };
   // function to delete item from the list
-  // const delete = i => {
-  //   console.log(i);
-  //   let newState = state.filter(el => el !== state[i]);
-  //   setState(newState);
-  //   console.log(state);
-  // };
+  const deleteItem = i => {
+    console.log(i);
+    let newState = state.filter(el => el !== state[i]);
+    setState(newState);
+    console.log(state);
+  };
   // create a list item for each state object with a onClick call
   const listing = state.map((el, index) => (
-    <li
-      key={index}
-      onClick={() => {
-        cross(index);
-      }}
-      className={el.crossed ? "crossed" : null}
-    >
-      {el.message}
+    <li key={index} className={el.crossed ? "crossed" : null}>
+      <img
+        onClick={() => {
+          deleteItem(index);
+        }}
+        src={trash}
+        alt="delete item button"
+      />
+      <p
+        onClick={() => {
+          cross(index);
+        }}
+      >
+        {el.message}
+      </p>
     </li>
   ));
   // function to add the new input into the state if not empty
@@ -54,13 +63,12 @@ const App = () => {
   };
   return (
     <div className="container">
-      <h1>TO DO LIST</h1>
-      <div className="list">LIST</div>
+      <h1>✨ 🌟 ⭐️ TO DO LIST ⭐️ 🌟 ✨</h1>
       <ul>{listing}</ul>
 
-      <input type="text" value={newInput} onChange={inputHandler} />
-      <div>
-        <button onClick={addTodoHandler}>ADD A TODO</button>
+      <div className="more">
+        <input type="text" value={newInput} onChange={inputHandler} />
+        <button onClick={addTodoHandler}>ADD TO LIST ✏️</button>
       </div>
     </div>
   );
