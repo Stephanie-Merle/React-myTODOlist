@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import trash from "./assets/trash.svg";
+import git from "./assets/GitHub-Mark-32px.png";
 import "./reset.css";
 import "./App.css";
 
@@ -88,6 +89,11 @@ const App = () => {
           <button onClick={addTodoHandler}>ADD TO LIST ✏️</button>
         </div>
       </div>
+      <footer>
+        <a href="https://github.com/Stephanie-Merle/React-myTODOlist">
+          ⭐️ CHECK SOURCE CODE HERE ⭐️
+        </a>
+      </footer>
     </>
   );
 };

@@ -3,6 +3,8 @@
 body {
   background-color: rgb(241, 239, 239);
   font-family: "Indie Flower", cursive;
+  position: relative;
+  min-height: 100vh;
 }
 
 .crossed {
@@ -10,9 +12,10 @@ body {
   color: rgb(177, 175, 175);
   order: 2;
 }
-/* container list h1 ul li input button */
+
 .container {
   justify-content: center;
+  padding-bottom: 70px;
 }
 h1 {
   text-align: center;
@@ -88,4 +91,17 @@ button:hover {
   align-self: center;
   border: none;
   background-color: rgba(238, 238, 82, 0.678);
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 8px;
+  height: 40px;
+  text-align: center;
+  align-content: center;
+  width: 100%;
+}
+a {
+  margin-top: 0.6em;
+  text-decoration: none;
 }

@@ -1,3 +1,17 @@
+# REACT TODO LIST
+
+Todo list made with React and CI with Netlify >> https://my-todotodo.netlify.com/
+
+## Author
+
+- [Stephanie Merle](https://github.com/Stephanie-Merle)
+
+## Preview
+
+<div style="display:flex; margin:auto">
+<img src="./src/assets/todo-preview.png" width="100%" height="100%" title="todo app">
+</div>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
