@@ -14,7 +14,7 @@ const App = () => {
   const [state, setState] = useState(init);
   // the state to get the new input value
   const [newInput, setInput] = useState("");
-  const [search, setSearch] = useState("");
+
   document.querySelector("body").addEventListener("keypress", function(e) {
     const key = e.which || e.keyCode;
     if (key === 13) {
@@ -29,14 +29,11 @@ const App = () => {
     let crossStatus = copy[i].crossed;
     copy[i].crossed = !crossStatus;
     setState(copy);
-    console.log(state);
   };
   // function to delete item from the list
   const deleteItem = i => {
-    console.log(i);
     let newState = state.filter(el => el !== state[i]);
     setState(newState);
-    console.log(state);
   };
   // create a list item for each state object with a onClick call
   let result = [...state];
@@ -70,7 +67,6 @@ const App = () => {
     return setInput(e.target.value);
   };
   const searchHandler = e => {
-    setSearch(e.target.value);
     let research = new RegExp(e.target.value);
     result = state.filter(el => research.test(el.message));
     setState(result);
