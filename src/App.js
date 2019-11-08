@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import trash from "./assets/trash.svg";
-import git from "./assets/GitHub-Mark-32px.png";
 import "./reset.css";
 import "./App.css";
 
