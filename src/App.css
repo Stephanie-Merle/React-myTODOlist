@@ -8,6 +8,7 @@ body {
 .crossed {
   text-decoration: line-through;
   color: rgb(177, 175, 175);
+  order: 2;
 }
 /* container list h1 ul li input button */
 .container {
@@ -34,13 +35,14 @@ img:hover {
 }
 ul {
   width: 50%;
-  display: block;
-
+  display: flex;
   align-self: center;
   margin: auto;
+  flex-direction: column;
 }
 li {
-  display: inline-flex;
+  display: flex;
+  flex-grow: 1;
   padding: 0.5em;
   margin: 0.5em auto;
   width: 100%;
