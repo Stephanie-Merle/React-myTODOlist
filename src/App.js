@@ -14,7 +14,13 @@ const App = () => {
   const [state, setState] = useState(init);
   // the state to get the new input value
   const [newInput, setInput] = useState("");
-
+  document.querySelector("body").addEventListener("keypress", function(e) {
+    const key = e.which || e.keyCode;
+    if (key === 13) {
+      // key 13 = enter key stroke
+      addTodoHandler();
+    }
+  });
   // function called when a list item is clicked
   // should toggle the crossed state
   const cross = i => {
