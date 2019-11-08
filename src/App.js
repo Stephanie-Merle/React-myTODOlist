@@ -14,6 +14,7 @@ const App = () => {
   const [state, setState] = useState(init);
   // the state to get the new input value
   const [newInput, setInput] = useState("");
+  const [search, setSearch] = useState("");
   document.querySelector("body").addEventListener("keypress", function(e) {
     const key = e.which || e.keyCode;
     if (key === 13) {
@@ -38,7 +39,8 @@ const App = () => {
     console.log(state);
   };
   // create a list item for each state object with a onClick call
-  const listing = state.map((el, index) => (
+  let result = [...state];
+  const listing = result.map((el, index) => (
     <li key={index} className={el.crossed ? "crossed" : null}>
       <img
         onClick={() => {
@@ -67,16 +69,26 @@ const App = () => {
   const inputHandler = e => {
     return setInput(e.target.value);
   };
+  const searchHandler = e => {
+    setSearch(e.target.value);
+    let research = new RegExp(e.target.value);
+    result = state.filter(el => research.test(el.message));
+    setState(result);
+  };
   return (
-    <div className="container">
-      <h1>✨ 🌟 ⭐️ TO DO LIST ⭐️ 🌟 ✨</h1>
-      <ul>{listing}</ul>
-
-      <div className="more">
-        <input type="text" value={newInput} onChange={inputHandler} />
-        <button onClick={addTodoHandler}>ADD TO LIST ✏️</button>
+    <>
+      <div className="container">
+        <h1>✨ 🌟 ⭐️ TO DO LIST ⭐️ 🌟 ✨</h1>
+        <div className="search">
+          <input type="text" placeholder="SEARCH 👀" onChange={searchHandler} />
+        </div>
+        <ul>{listing}</ul>
+        <div className="more">
+          <input type="text" value={newInput} onChange={inputHandler} />
+          <button onClick={addTodoHandler}>ADD TO LIST ✏️</button>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
