@@ -14,14 +14,9 @@ const App = () => {
   const [state, setState] = useState(init);
   // the state to get the new input value
   const [newInput, setInput] = useState("");
+  // copy of state to be used to filter list display
+  const [result, setResult] = useState([...state]);
 
-  document.querySelector("body").addEventListener("keypress", function(e) {
-    const key = e.which || e.keyCode;
-    if (key === 13) {
-      // key 13 = enter key stroke
-      addTodoHandler();
-    }
-  });
   // function called when a list item is clicked
   // should toggle the crossed state
   const cross = i => {
@@ -29,14 +24,15 @@ const App = () => {
     let crossStatus = copy[i].crossed;
     copy[i].crossed = !crossStatus;
     setState(copy);
+    setResult(copy);
   };
   // function to delete item from the list
   const deleteItem = i => {
     let newState = state.filter(el => el !== state[i]);
     setState(newState);
+    setResult(newState);
   };
   // create a list item for each state object with a onClick call
-  let result = [...state];
   const listing = result.map((el, index) => (
     <li key={index} className={el.crossed ? "crossed" : null}>
       <img
@@ -59,7 +55,10 @@ const App = () => {
   const addTodoHandler = () => {
     if (newInput) {
       setState([...state, { message: newInput, crossed: false }]);
-      setInput("");
+      setResult([...state, { message: newInput, crossed: false }]);
+      return setInput("");
+    } else {
+      return null;
     }
   };
   // update the new input state
@@ -67,9 +66,13 @@ const App = () => {
     return setInput(e.target.value);
   };
   const searchHandler = e => {
-    let research = new RegExp(e.target.value);
-    result = state.filter(el => research.test(el.message));
-    setState(result);
+    if (e.target.value) {
+      let research = new RegExp(e.target.value);
+      let myResult = result.filter(el => research.test(el.message));
+      return setResult(myResult);
+    } else {
+      return setResult([...state]);
+    }
   };
   return (
     <>
